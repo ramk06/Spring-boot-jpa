@@ -12,6 +12,7 @@ This repository contains my learning journey and implementation of the basics of
   - **Delete:** Deleted individual and all records from the database.
 - **Repository Usage:** Utilized `UserRepository`, which extends `JpaRepository`, to simplify database operations.
 - **Component Scanning:** Configured `@ComponentScan` for proper Spring Boot package management.
+- **Custom Queries:** Implemented both JPQL and native SQL queries for specific use cases.
 
 ## Prerequisites
 - **Java 8 or above**
@@ -81,15 +82,48 @@ Iterable<User> users = userRepository.findAll();
 users.forEach(System.out::println);
 ```
 
+### Custom Queries
+#### Find Users by Name
+```java
+List<User> users = userRepository.findByName("Utaam");
+users.forEach(System.out::println);
+```
+
+#### Find Users by Name and City
+```java
+List<User> users = userRepository.findByNameAndCity("Utaam", "City1");
+users.forEach(System.out::println);
+```
+
+#### Retrieve All Users Using JPQL
+```java
+List<User> allUsers = userRepository.getAllUser();
+allUsers.forEach(System.out::println);
+```
+
+#### Retrieve Users by Name and City Using JPQL with Parameters
+```java
+List<User> users = userRepository.getUserByName("Utaam", "City1");
+users.forEach(System.out::println);
+```
+
+#### Retrieve All Users Using Native SQL
+```java
+List<User> nativeUsers = userRepository.getUsers();
+nativeUsers.forEach(System.out::println);
+```
+
 ## Learnings
 - Basic setup of Spring Boot with JPA.
 - CRUD operations using `JpaRepository`.
 - Using `Optional` to handle potential null values.
 - Managing database interactions using Spring Data JPA.
 - Importance of component scanning and proper application context configuration.
+- Writing custom queries using JPQL and native SQL.
 
 ## Future Improvements
-- Implement custom queries using JPQL and Native SQL.
+- Implement pagination and sorting for data retrieval.
 - Add service and controller layers for better architecture.
-- Explore advanced features like pagination and sorting.
+- Explore advanced features of Spring Data JPA.
+
 
