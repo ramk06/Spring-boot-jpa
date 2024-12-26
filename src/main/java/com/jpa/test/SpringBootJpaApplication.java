@@ -20,7 +20,7 @@ public class SpringBootJpaApplication {
 	public static <T> void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(SpringBootJpaApplication.class, args);
 		UserRepository userRepository = context.getBean(UserRepository.class);
-//		User user = new User();
+//		User user = new User(); 
 //		
 //		user.setName("Ramkumar");
 //		user.setCity("Kalaburagi");
@@ -45,7 +45,7 @@ public class SpringBootJpaApplication {
 
 //		User resultUser = userRepository.save(user1);
 
-//		List<User> users = List.of(user1,user2);
+	//	List<User> users = List.of(user1,user2);
 		// Save multiple objects
 //		Iterable<User> result = userRepository.saveAll(users);
 //		System.out.println("Saved user " +users);
@@ -80,14 +80,37 @@ public class SpringBootJpaApplication {
 	
 		
 		// Deleting the user 
-		userRepository.deleteById(52);
-		System.out.println("deleted");
+//		userRepository.deleteById(52);
+//		System.out.println("deleted");
+//		
+//		Iterable<User> allusers = userRepository.findAll();
+//		allusers.forEach(user -> System.out.println(user));
+//	
+//		userRepository.deleteAll(allusers);
+//		
+//		List<User> users = userRepository.findByName("Utaam");
+//		users.forEach(e->System.out.println(e));
 		
-		Iterable<User> allusers = userRepository.findAll();
-		allusers.forEach(user -> System.out.println(user));
+//		List<User> users = userRepository.findByNameAndCity("Utaam","City1");
+//		users.forEach(e->System.err.println(e));
 	
-		userRepository.deleteAll(allusers);
+//		List<User> allUser = userRepository.getAllUser();
+//		allUser.forEach(e->System.err.println(e));
+		
+//		List<User> userByName = userRepository.getUserByName("Utaam");
+//		userByName.forEach(e -> System.err.print(e));
+		
+		List<User> userByName = userRepository.getUserByName("Utaam","City1");
+		userByName.forEach(e -> System.err.println(e));
+		
+		System.out.println("________________________________-");
+		
+		userRepository.getUsers().forEach(e -> System.out.println(e));
 	}
+	
+	
+	
+	
 	
 
 }
